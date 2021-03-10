@@ -1,0 +1,9 @@
+digraph mygraph{
+ node [shape=plaintext]
+s4->s3
+s4->s6
+s6->s1
+s1->s4
+s1->s5
+s1->s2
+}
