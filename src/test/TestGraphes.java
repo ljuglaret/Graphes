@@ -1,5 +1,4 @@
 package test;
-import representation.GraphesOrientes;
 import matrice.MatriceB;
 import visuel.DessinGraphe;
 import java.io.IOException;
@@ -21,26 +20,9 @@ public class TestGraphes {
 
         //m1.fermetureTranstive().afficher();
 
-        GraphesOrientes<String> gradj = new GraphesOrientes<String>();
-		gradj.ajouterSommet("s1");
-		gradj.ajouterSommet("s2");
-		gradj.ajouterSommet("s3");
-		gradj.ajouterSommet("s4");
-		gradj.ajouterSommet("s5");
-		gradj.ajouterSommet("s6");
-		gradj.ajouterArc("s1", "s4");
-		gradj.ajouterArc("s1", "s5");
-		gradj.ajouterArc("s1", "s2");
-		gradj.ajouterArc("s4", "s3");
-		gradj.ajouterArc("s4", "s6");
-		gradj.ajouterArc("s6" , "s1");
-
-		m1.afficher();
-		m1.litDepuisListe().afficher();
-
+	
         DessinGraphe<String> dessin = new DessinGraphe<String>(m1.litDepuisListe());
 		dessin.conversionDot();
 
-        gradj.getGraphe();
     }
 }

@@ -93,7 +93,7 @@ public class MatriceB extends Matrice<Boolean>{
 	public Graphe<String> litDepuisListe(){
 		GraphesOrientes<String> graphe = new GraphesOrientes<String>();
         List<String> sommets = new ArrayList<>();
-        for(int i = 0; i < 5  ; i++){
+        for(int i = 0; i < nbLignes  ; i++){
             sommets.add("x"+(i+1));
             graphe.ajouterSommet("x"+(i+1));
 
