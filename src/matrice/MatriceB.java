@@ -89,6 +89,33 @@ public class MatriceB extends Matrice<Boolean>{
         return somme(identite(nbLignes)).puissance(nbLignes - 1);
     }
 
+    public MatriceB royW(){
+
+        Boolean[][] stockArr = new Boolean[nbLignes][nbLignes];
+        for(int i = 0; i < nbLignes ; i++){
+            Boolean[] ligne = new Boolean[nbColonnes];
+            stockArr[i] = matrice.get(i).toArray(ligne);
+        }
+
+        MatriceB matRoyW = new MatriceB(nbLignes , nbColonnes);
+
+        for(int r = 0 ;  r < nbLignes ; r++){
+            for(int i = 0 ;  i < nbLignes ; i++){
+                for(int j = 0 ; j  < nbLignes ; j++){
+                        if (i == j) {
+                            stockArr[i][j] = true ;
+                        }
+                        stockArr[i][j] = stockArr[i][j] || (stockArr[i][r] && stockArr[r][j]);
+                }
+            }
+        }
+
+        for(int i = 0 ; i < nbLignes ; i++){
+            matRoyW.ajoutLigne(new ArrayList<Boolean>(Arrays.asList(stockArr[i])));
+        }
+        return matRoyW;
+    }
+
 
 	public Graphe<String> litDepuisListe(){
 		GraphesOrientes<String> graphe = new GraphesOrientes<String>();
