@@ -1,28 +1,45 @@
 package test;
-import matrice.MatriceB;
 import representation.GraphesOrientes;
-import visuel.*;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
 
 
 public class TestGraphes {
 
-
-
     public static void main(String[] args) throws IOException,InterruptedException {
 
-        MatriceB m1 = new MatriceB(5,5);
-        m1.ajoutLigne(Arrays.asList(false,true,false,true,false));
-        m1.ajoutLigne(Arrays.asList(false,true,true,false,false));
-        m1.ajoutLigne(Arrays.asList(false,false,false,false,true));
-        m1.ajoutLigne(Arrays.asList(false,false,true,false,true));
-        m1.ajoutLigne(Arrays.asList(false,false,false,true,true));
+        GraphesOrientes<String> gr = new GraphesOrientes<>();
+        ArrayList<LinkedList<String>>listei = new ArrayList<LinkedList<String>>(); 
+        listei.add(new LinkedList<String>( Arrays.asList("A","B","E","F")));
+        listei.add(new LinkedList<String>(Arrays.asList("B","A","I")));
+        listei.add(new LinkedList<String>(Arrays.asList("C","D","G","J")));
+        listei.add(new LinkedList<String>(Arrays.asList("D","C","G","K")));
+        listei.add(new LinkedList<String>(Arrays.asList("E","A","H")));
+        listei.add(new LinkedList<String>(Arrays.asList("F","A","H")));
+        listei.add(new LinkedList<String>(Arrays.asList("G","C","D")));
+        listei.add(new LinkedList<String>(Arrays.asList("H","E","F","I")));
+        listei.add(new LinkedList<String>(Arrays.asList("I","B","H","L")));
+        listei.add(new LinkedList<String>(Arrays.asList("J","C","K")));
+        listei.add(new LinkedList<String>(Arrays.asList("K","D","J")));
+        listei.add(new LinkedList<String>(Arrays.asList("L","I")));
+        listei.add(new LinkedList<String>(Arrays.asList("M","N","O")));
+        listei.add(new LinkedList<String>(Arrays.asList("N","M","O")));
+        listei.add(new LinkedList<String>(Arrays.asList("O","M","N")));
 
-        m1.fermetureTranstive().afficher();
-        m1.royW().afficher();
-        //DessinGraphe<String> dessin = new DessinGraphe<String>(m1.fermetureTranstive().litDepuisListe());
-		//dessin.conversionDot("oriente");
+        for(LinkedList<String> ls : listei){
+            gr.ajouterSommet(ls.get(0));
+        }
+        for(LinkedList<String> ls : listei){
+            for(int i = 1 ; i < ls.size() ; i++) {
+                Collections.sort(ls);
+                gr.ajouterArc(ls.get(0),ls.get(i));
+            }
+        }
 
+        gr.parcours();
     }
 }

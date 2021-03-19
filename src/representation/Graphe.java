@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.Queue;
+import java.util.ArrayDeque;
+
 
 public abstract class Graphe<S> {
 	
@@ -125,5 +128,36 @@ public abstract class Graphe<S> {
     		sommets.add(ligne.getKey());
     	}
     	return sommets;
+    }
+
+    public void parcours() {
+        Queue<S> q    = new ArrayDeque<S>();
+        List<S> sommets     = getSommets();
+        List<S> sommetsMarques = new ArrayList<>();
+        S sommetCourant             =   sommets.get(0);
+       
+        while(!(sommets.size() == sommetsMarques.size())){
+            q.add(sommetCourant);
+            sommetsMarques.add(sommetCourant);
+            while(!q.isEmpty()){
+                q.remove();
+                for(S s : successeurImmediat(sommetCourant)){
+                    if(!sommetsMarques.contains(s)){
+                        q.add(s);
+                        sommetCourant = q.peek();      
+                        sommetsMarques.add(s);  
+                    }
+                }
+            }
+            for(S s : sommets){
+                if (!sommetsMarques.contains(s)){
+                    sommetCourant = s ;
+                    break;
+                }
+            }
+        }
+        for(S s : sommetsMarques){
+            System.out.print(s + " ");
+        }          
     }
 }
