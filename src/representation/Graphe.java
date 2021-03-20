@@ -131,10 +131,10 @@ public abstract class Graphe<S> {
     }
 
     public void parcours() {
-        Queue<S> q    = new ArrayDeque<S>();
-        List<S> sommets     = getSommets();
-        List<S> sommetsMarques = new ArrayList<>();
-        S sommetCourant             =   sommets.get(0);
+        Queue<S> q              =   new ArrayDeque<S>();
+        List<S> sommets         =   getSommets();
+        List<S> sommetsMarques  =   new ArrayList<>();
+        S sommetCourant         =   sommets.get(0);
        
         while(!(sommets.size() == sommetsMarques.size())){
             q.add(sommetCourant);
@@ -155,9 +155,9 @@ public abstract class Graphe<S> {
                     break;
                 }
             }
-        }
-        for(S s : sommetsMarques){
-            System.out.print(s + " ");
         }          
+        for(S s :sommetsMarques ){
+            System.out.print(s + " ");
+        } 
     }
-}
+}  

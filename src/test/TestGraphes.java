@@ -1,18 +1,21 @@
 package test;
 import representation.GraphesOrientes;
+import representation.GrapheNonOriente;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
+import visuel.*;
 
 
 public class TestGraphes {
 
     public static void main(String[] args) throws IOException,InterruptedException {
 
-        GraphesOrientes<String> gr = new GraphesOrientes<>();
+        GrapheNonOriente<String> gr = new GrapheNonOriente<>();
         ArrayList<LinkedList<String>>listei = new ArrayList<LinkedList<String>>(); 
         listei.add(new LinkedList<String>( Arrays.asList("A","B","E","F")));
         listei.add(new LinkedList<String>(Arrays.asList("B","A","I")));
@@ -41,5 +44,8 @@ public class TestGraphes {
         }
 
         gr.parcours();
+        DessinGraphe<String> dessin = new DessinGraphe<String>(gr);
+		dessin.conversionDot();
+        // dot -Tjpg visuel/input2.dot -o visuel/input2.jpg
     }
 }

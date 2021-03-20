@@ -19,6 +19,6 @@ public class TestGrapheDessin {
         m1.fermetureTranstive().afficher();
         m1.royW().afficher();
         DessinGraphe<String> dessin = new DessinGraphe<String>(m1.fermetureTranstive().litDepuisListe());
-		dessin.conversionDot("oriente");
+		dessin.conversionDot();
     }
 }

@@ -14,7 +14,7 @@ public class GrapheNonOriente<S> extends Graphe<S>  {
 	        Map<S,Boolean> ligneS1 = isoleLigne(s1);
 	        Map<S,Boolean> ligneS2 = isoleLigne(s2);
 	        ligneS1.put(s2 , true);
-	        ligneS2.put(s1 , true);
+	        //ligneS2.put(s1 , true);
 	    }
 	    
 	    public List<List<S>> chaines(){
