@@ -1,11 +1,9 @@
 package test;
-import representation.GraphesOrientes;
 import representation.GrapheNonOriente;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import visuel.*;
@@ -38,12 +36,13 @@ public class TestGraphes {
         }
         for(LinkedList<String> ls : listei){
             for(int i = 1 ; i < ls.size() ; i++) {
-                Collections.sort(ls);
                 gr.ajouterArc(ls.get(0),ls.get(i));
             }
         }
-
-        gr.parcours();
+        //gr.parcours();
+        //gr.composantesConnexes();
+        gr.foret();
+        //System.out.println(gr.foret());
         DessinGraphe<String> dessin = new DessinGraphe<String>(gr);
 		dessin.conversionDot();
         // dot -Tjpg visuel/input2.dot -o visuel/input2.jpg

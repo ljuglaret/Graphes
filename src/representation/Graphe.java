@@ -54,17 +54,12 @@ public abstract class Graphe<S> {
 
     public List<S> successeurImmediat(S s){
         List<S> suImmediat = new ArrayList<>();
-        for(Map.Entry <S, Map<S,Boolean>>ligne : listei.entrySet()){
-            if(ligne.getKey().equals(s)){
-                Map<S,Boolean> colonne = ligne.getValue();
-
+                Map<S,Boolean> colonne = isoleLigne(s);
                 for(Map.Entry<S,Boolean>cellule : colonne.entrySet()){
                    if(cellule.getValue()){
                     suImmediat.add(cellule.getKey());
                    }
                 }
-            }
-        }
         return suImmediat;
     }
 
@@ -133,30 +128,30 @@ public abstract class Graphe<S> {
     public void parcours() {
         Queue<S> q              =   new ArrayDeque<S>();
         List<S> sommets         =   getSommets();
-        List<S> sommetsMarques  =   new ArrayList<>();
+        List<S> sommetsParcourus  =   new ArrayList<>();
         S sommetCourant         =   sommets.get(0);
        
-        while(!(sommets.size() == sommetsMarques.size())){
+        while(!(sommets.size() == sommetsParcourus.size())){
             q.add(sommetCourant);
-            sommetsMarques.add(sommetCourant);
+            sommetsParcourus.add(sommetCourant);
             while(!q.isEmpty()){
                 q.remove();
                 for(S s : successeurImmediat(sommetCourant)){
-                    if(!sommetsMarques.contains(s)){
+                    if(!sommetsParcourus.contains(s)){
                         q.add(s);
-                        sommetCourant = q.peek();      
-                        sommetsMarques.add(s);  
+                        sommetCourant = q.peek();    
+                        sommetsParcourus.add(s);  
                     }
                 }
             }
             for(S s : sommets){
-                if (!sommetsMarques.contains(s)){
+                if (!sommetsParcourus.contains(s)){
                     sommetCourant = s ;
                     break;
                 }
             }
         }          
-        for(S s :sommetsMarques ){
+        for(S s :sommetsParcourus ){
             System.out.print(s + " ");
         } 
     }
