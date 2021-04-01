@@ -1,11 +1,8 @@
 package test;
-import representation.GrapheNonOriente;
+import representation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedList;
+import java.util.*;
 import visuel.*;
 
 
@@ -14,6 +11,8 @@ public class TestGraphes {
     public static void main(String[] args) throws IOException,InterruptedException {
 
         GrapheNonOriente<String> gr = new GrapheNonOriente<>();
+        
+
         ArrayList<LinkedList<String>>listei = new ArrayList<LinkedList<String>>(); 
         listei.add(new LinkedList<String>( Arrays.asList("A","B","E","F")));
         listei.add(new LinkedList<String>(Arrays.asList("B","A","I")));
@@ -39,10 +38,9 @@ public class TestGraphes {
                 gr.ajouterArc(ls.get(0),ls.get(i));
             }
         }
-        //gr.parcours();
-        //gr.composantesConnexes();
-        gr.foret();
-        //System.out.println(gr.foret());
+      
+        System.out.println(gr.composantesConnexes());
+        System.out.println(gr.ordreParcoursSommets());
         DessinGraphe<String> dessin = new DessinGraphe<String>(gr);
 		dessin.conversionDot();
         // dot -Tjpg visuel/input2.dot -o visuel/input2.jpg
